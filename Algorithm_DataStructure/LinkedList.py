@@ -78,4 +78,4 @@ class LinkedList:  # Look up PEP 20 & PEP 8
         self.size -= 1
 
     def __len__(self):
-        return self.size  # lieber precompute than recompute ;)
+        return self.size  # better precompute than recompute ;)
