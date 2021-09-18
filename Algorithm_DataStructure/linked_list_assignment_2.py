@@ -52,6 +52,7 @@ class LinkedList:  # Look up PEP 20 & PEP 8
             if current_index == index:
                 return current.data
             current_index += 1
+            current = self.data
 
     def insert(self, index, data):
         pointer = []  # Node where the inserted Element should point to
@@ -106,7 +107,7 @@ x.at(2)
 
 time_start = perf_counter_ns()
 test = LinkedList()
-n = 50000
+n = 5000
 j = 1
 while j <= n:
     test.add(j)
@@ -119,10 +120,5 @@ len(test)
 
 
 time_in_sec_10000 = time_span / 1000000000
-print("To create a Linked Links with n = 10.000 takes %d Seconds" %
-      time_in_sec_10000)
-
-
-time_in_sec_100000 = (time_span / 1000000000)
-print("To create a Linked Links with n = 100.000 takes %d Seconds" %
-      time_in_sec_100000)
+print('To create a Linked-List with' + n +
+      'it takes %d Seconds" % time_in_sec_10000')
