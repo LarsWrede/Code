@@ -1,6 +1,6 @@
 from time import perf_counter_ns
 from random import randrange
-test = ["test"]
+
 
 class Node:  # Style guide: convention how to write code - Capitalize first letter
     # Class is the blueprint
