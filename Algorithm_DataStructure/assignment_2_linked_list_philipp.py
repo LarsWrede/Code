@@ -1,5 +1,7 @@
 from time import perf_counter_ns
 from random import randrange
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class Node:  # Style guide: convention how to write code - Capitalize first letter
@@ -84,11 +86,14 @@ class LinkedList:  # Look up PEP 20 & PEP 8
     def __len__(self):
         return self.size  # better precompute than recompute ;)
 
-
 # time complexity
 
 i = 10
+count = []
+time = []
+data = []
 while i <= 100000:
+    count.append(i)
     test = LinkedList()
 
     for j in (range(i)):
@@ -101,6 +106,27 @@ while i <= 100000:
     time_end = perf_counter_ns()
     time_span = time_end - time_start
     time_in_sec_10000 = time_span / 1000000000
-    print(f"i: {i} takes {time_in_sec_10000} Seconds")
-
+    time.append(time_in_sec_10000)
+    data = {"Count": count, "Time_Span": time}
+    # print(f"i: {i} takes {time_in_sec_10000} Seconds")
     i = 10*i
+
+df = pd.DataFrame(data)
+
+# plot
+# Dimension and Style of the Chart
+plt.figure(figsize=(16,5))
+plt.style.use("ggplot")
+
+plt.plot(df["Count"], df["Time_Span"],
+        marker = "o",
+        color = "red",
+        label = "Time Span")
+
+# Labeling and aligning the axes to 0
+plt.xlabel("Amount of elements inserted")
+plt.xlim(xmin=0)
+plt.ylabel("Time Span in Seconds")
+plt.ylim(ymin=0)
+plt.title("Calculate time complexity to insert elements into a linked list")
+plt.show()
